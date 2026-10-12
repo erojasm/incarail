@@ -1,0 +1,36 @@
+sequenceDiagram
+    actor U as Usuario (operador)
+    participant SPA as SPA Vue
+    participant API as API Laravel
+    participant S as CompetitionService
+    participant DB as Base de datos
+    participant FD as FootballDataClient
+    participant EXT as football-data.org
+
+    U->>SPA: Clic en "Importar"
+    SPA->>API: GET /api/competitions/PL (Bearer)
+    API->>API: Passport + can:competitions.import
+    API->>S: import("PL")
+    S->>DB: ¿Existe y se importó hace < 24 h?
+    alt Copia local vigente
+        DB-->>S: liga + equipos
+        S-->>API: source = database
+    else Falta o venció
+        S->>FD: competitionTeams("PL")
+        FD->>DB: RateLimiter: ¿queda cupo?
+        alt Sin cupo local
+            FD-->>S: FootballDataException 429
+        else Con cupo
+            FD->>EXT: GET /v4/competitions/PL/teams
+            EXT-->>FD: liga + equipos + planteles
+            FD-->>S: payload
+            S->>DB: upsert ligas, equipos, jugadores (transacción)
+        end
+        alt Falló pero hay copia vieja
+            S-->>API: datos guardados + warning
+        else Falló y no hay copia
+            S-->>API: 429 / 502 / 503
+        end
+    end
+    API-->>SPA: JSON (data + meta.source/warning)
+    SPA-->>U: Equipos de la liga o mensaje claro

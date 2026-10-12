@@ -1,0 +1,27 @@
+flowchart LR
+    U([Usuario]) --> SPA
+
+    subgraph SPA[SPA Vue 3]
+        R[Vue Router + guard CASL]
+        P[Pinia: auth / notify]
+        AX[Axios + interceptores]
+    end
+
+    subgraph API[API Laravel 13 / PHP 8.5]
+        PA[Passport auth:api]
+        G[Gate can:permiso]
+        C[Controllers + FormRequests + Resources]
+        S[CompetitionService / UserService / RoleService]
+        FD[FootballDataClient\nRateLimiter 9/min\nbloqueo si 429]
+        EX[ApiExceptionRenderer\nJSON único]
+    end
+
+    DB[(Base de datos\nSQLite / MySQL\nusuarios, roles, permisos,\nligas, equipos, jugadores,\ncache y contador de cupo)]
+    EXT[[football-data.org\n10 req/min]]
+
+    AX -- "Bearer token" --> PA --> G --> C --> S
+    S -- "lee siempre de BD" --> DB
+    S -- "solo si falta o venció" --> FD
+    FD -- "X-Auth-Token (.env)" --> EXT
+    FD -- "cuenta peticiones" --> DB
+    C -.-> EX

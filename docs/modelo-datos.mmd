@@ -1,0 +1,50 @@
+erDiagram
+    users ||--o{ role_user : tiene
+    roles ||--o{ role_user : asignado
+    roles ||--o{ permission_role : incluye
+    permissions ||--o{ permission_role : otorgado
+    competitions ||--o{ competition_team : participa
+    teams ||--o{ competition_team : juega
+    teams ||--o{ players : tiene
+
+    users {
+        bigint id PK
+        string name
+        string email UK
+        string password "hash bcrypt"
+        boolean is_active
+    }
+    roles {
+        bigint id PK
+        string name UK
+        string label
+    }
+    permissions {
+        bigint id PK
+        string name UK "ej. teams.read"
+        string action "CASL"
+        string subject "CASL"
+    }
+    competitions {
+        bigint id PK "id de football-data"
+        string code
+        string name
+        string area_name
+        date season_start
+        datetime imported_at
+    }
+    teams {
+        bigint id PK "id de football-data"
+        string name
+        string tla
+        string crest
+        string venue
+    }
+    players {
+        bigint id PK "id de football-data"
+        bigint team_id FK
+        string name
+        string position
+        smallint shirt_number
+        date date_of_birth
+    }

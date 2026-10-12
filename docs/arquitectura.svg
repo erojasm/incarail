@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 760" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect width="1120" height="760" fill="#ffffff"/>
+  <text x="30" y="40" font-size="22" font-weight="700" fill="#0b3d2e">Arquitectura · Inca Rail Fútbol</text>
+  <text x="30" y="62" font-size="13" fill="#475569">SPA Vue 3 → API Laravel 13 (Passport) → Base de datos local; football-data.org solo se consulta al importar o refrescar</text>
+
+  <!-- Usuario -->
+  <circle cx="75" cy="205" r="26" fill="#e2e8f0" stroke="#334155"/>
+  <text x="75" y="210" font-size="20" text-anchor="middle">👤</text>
+  <text x="75" y="252" font-size="13" text-anchor="middle" fill="#0f172a">Usuario</text>
+  <text x="75" y="268" font-size="11" text-anchor="middle" fill="#64748b">móvil / escritorio</text>
+  <line x1="103" y1="205" x2="158" y2="205" stroke="#334155" stroke-width="1.6" marker-end="url(#a)"/>
+
+  <!-- SPA -->
+  <rect x="160" y="95" width="250" height="300" rx="10" fill="#ecfdf5" stroke="#0b3d2e" stroke-width="1.6"/>
+  <text x="285" y="122" font-size="15" font-weight="700" text-anchor="middle" fill="#0b3d2e">SPA · Vue 3 + TypeScript</text>
+  <g font-size="12" fill="#0f172a">
+    <rect x="178" y="138" width="214" height="40" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="285" y="155" text-anchor="middle">Vue Router + guard</text>
+    <text x="285" y="170" text-anchor="middle" fill="#64748b" font-size="11">bloquea rutas según CASL</text>
+    <rect x="178" y="186" width="214" height="40" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="285" y="203" text-anchor="middle">Pinia (auth, notify)</text>
+    <text x="285" y="218" text-anchor="middle" fill="#64748b" font-size="11">token + reglas CASL del usuario</text>
+    <rect x="178" y="234" width="214" height="40" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="285" y="251" text-anchor="middle">Vuetify (responsive)</text>
+    <text x="285" y="266" text-anchor="middle" fill="#64748b" font-size="11">carga, vacíos y errores</text>
+    <rect x="178" y="282" width="214" height="52" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="285" y="300" text-anchor="middle">Axios + interceptores</text>
+    <text x="285" y="315" text-anchor="middle" fill="#64748b" font-size="11">Bearer token · 401 → login</text>
+    <text x="285" y="328" text-anchor="middle" fill="#64748b" font-size="11">errores en formato único</text>
+  </g>
+  <text x="285" y="380" font-size="11" text-anchor="middle" fill="#64748b">@casl/ability · @casl/vue</text>
+
+  <!-- SPA -> API -->
+  <line x1="410" y1="157" x2="477" y2="157" stroke="#334155" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="445" y="180" font-size="10" text-anchor="middle" fill="#334155">HTTPS</text>
+  <text x="445" y="193" font-size="10" text-anchor="middle" fill="#334155">JSON</text>
+  <text x="445" y="206" font-size="10" text-anchor="middle" fill="#334155">Bearer</text>
+  <text x="445" y="219" font-size="10" text-anchor="middle" fill="#334155">token</text>
+
+  <!-- API -->
+  <rect x="480" y="95" width="330" height="430" rx="10" fill="#f8fafc" stroke="#0b3d2e" stroke-width="1.6"/>
+  <text x="645" y="122" font-size="15" font-weight="700" text-anchor="middle" fill="#0b3d2e">API REST · Laravel 13 / PHP 8.5</text>
+  <g font-size="12" fill="#0f172a">
+    <rect x="500" y="136" width="290" height="42" rx="6" fill="#fef3c7" stroke="#d97706"/>
+    <text x="645" y="154" text-anchor="middle" font-weight="600">Laravel Passport · auth:api</text>
+    <text x="645" y="170" text-anchor="middle" fill="#64748b" font-size="11">POST /login emite token · /logout lo revoca</text>
+    <rect x="500" y="186" width="290" height="42" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="645" y="204" text-anchor="middle" font-weight="600">Gate · middleware can:permiso</text>
+    <text x="645" y="220" text-anchor="middle" fill="#64748b" font-size="11">roles → permisos en BD (ACL en servidor)</text>
+    <rect x="500" y="236" width="290" height="42" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="645" y="254" text-anchor="middle" font-weight="600">Controllers delgados</text>
+    <text x="645" y="270" text-anchor="middle" fill="#64748b" font-size="11">Form Requests · API Resources</text>
+    <rect x="500" y="286" width="290" height="42" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="645" y="304" text-anchor="middle" font-weight="600">Servicios</text>
+    <text x="645" y="320" text-anchor="middle" fill="#64748b" font-size="11">CompetitionService · UserService · RoleService</text>
+    <rect x="500" y="336" width="290" height="70" rx="6" fill="#fee2e2" stroke="#c8102e"/>
+    <text x="645" y="355" text-anchor="middle" font-weight="600">FootballDataClient (única clase externa)</text>
+    <text x="645" y="371" text-anchor="middle" fill="#334155" font-size="11">RateLimiter: máx. 9 llamadas / 60 s</text>
+    <text x="645" y="386" text-anchor="middle" fill="#334155" font-size="11">si football-data responde 429 → bloqueo</text>
+    <text x="645" y="400" text-anchor="middle" fill="#334155" font-size="11">hasta X-RequestCounter-Reset</text>
+    <rect x="500" y="414" width="290" height="42" rx="6" fill="#fff" stroke="#94a3b8"/>
+    <text x="645" y="432" text-anchor="middle" font-weight="600">ApiExceptionRenderer</text>
+    <text x="645" y="448" text-anchor="middle" fill="#64748b" font-size="11">{ message, code } · 401/403/404/422/429/502/503</text>
+  </g>
+  <text x="645" y="482" font-size="11" text-anchor="middle" fill="#64748b">throttle:api (120/min por usuario) · throttle:login (5/min)</text>
+  <text x="645" y="498" font-size="11" text-anchor="middle" fill="#64748b">/team y /players nunca llaman a football-data</text>
+
+  <!-- football-data -->
+  <rect x="880" y="300" width="210" height="110" rx="10" fill="#fff7ed" stroke="#c2410c" stroke-width="1.6"/>
+  <text x="985" y="328" font-size="14" font-weight="700" text-anchor="middle" fill="#9a3412">football-data.org</text>
+  <text x="985" y="348" font-size="12" text-anchor="middle" fill="#334155">API v4 · plan gratuito</text>
+  <text x="985" y="366" font-size="12" text-anchor="middle" fill="#334155">10 peticiones / minuto</text>
+  <text x="985" y="384" font-size="11" text-anchor="middle" fill="#64748b">GET /competitions</text>
+  <text x="985" y="398" font-size="11" text-anchor="middle" fill="#64748b">GET /competitions/{code}/teams</text>
+  <line x1="790" y1="365" x2="878" y2="355" stroke="#c2410c" stroke-width="1.6" stroke-dasharray="6 4" marker-end="url(#a)"/>
+  <text x="815" y="345" font-size="10" fill="#9a3412">solo si falta</text>
+  <text x="815" y="390" font-size="10" fill="#9a3412">X-Auth-Token</text>
+  <text x="815" y="402" font-size="10" fill="#9a3412">(.env)</text>
+
+  <!-- DB -->
+  <path d="M880 120 a105 18 0 0 0 210 0 v130 a105 18 0 0 1 -210 0 z" fill="#eff6ff" stroke="#1d4ed8" stroke-width="1.6"/>
+  <ellipse cx="985" cy="120" rx="105" ry="18" fill="#dbeafe" stroke="#1d4ed8" stroke-width="1.6"/>
+  <text x="985" y="125" font-size="13" font-weight="700" text-anchor="middle" fill="#1e3a8a">Base de datos</text>
+  <text x="985" y="158" font-size="11" text-anchor="middle" fill="#334155">SQLite (por defecto) / MySQL</text>
+  <text x="985" y="176" font-size="11" text-anchor="middle" fill="#334155">users · roles · permissions</text>
+  <text x="985" y="192" font-size="11" text-anchor="middle" fill="#334155">competitions · teams · players</text>
+  <text x="985" y="208" font-size="11" text-anchor="middle" fill="#334155">oauth_* (Passport)</text>
+  <text x="985" y="224" font-size="11" text-anchor="middle" fill="#334155">cache: contador de cupo</text>
+  <line x1="790" y1="307" x2="878" y2="200" stroke="#1d4ed8" stroke-width="1.6" marker-end="url(#a)"/>
+  <text x="985" y="288" font-size="10" text-anchor="middle" fill="#1e3a8a">Eloquent · se lee siempre de aquí</text>
+
+  <!-- Estrategia -->
+  <rect x="30" y="555" width="1060" height="180" rx="10" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="50" y="582" font-size="15" font-weight="700" fill="#0b3d2e">Cómo se respeta el límite de 10 peticiones por minuto</text>
+  <g font-size="12.5" fill="#0f172a">
+    <text x="50" y="608">1. La BD es la fuente de lectura: /team, /team/{id} y /players solo consultan la BD; nunca gastan cupo.</text>
+    <text x="50" y="630">2. Copia con vigencia (24 h configurable): una liga importada hace poco se responde desde la BD sin llamar afuera.</text>
+    <text x="50" y="652">3. Importar una liga cuesta 1 sola llamada (/competitions/{code}/teams trae equipos y planteles).</text>
+    <text x="50" y="674">4. Presupuesto local con RateLimiter (9/min, 1 de margen): sin cupo responde 429 + Retry-After sin llamar a football-data.</text>
+    <text x="50" y="696">5. Si football-data falla o responde 429, se sirve la copia guardada con un aviso (meta.warning); si no hay copia → 429/502/503.</text>
+    <text x="50" y="718" fill="#475569">La SPA muestra el mensaje y los segundos de espera; nunca una pantalla rota.</text>
+  </g>
+</svg>
